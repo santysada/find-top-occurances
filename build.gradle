@@ -1,0 +1,91 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'jacoco'
+apply plugin:'application'
+mainClassName = "com.words.Top"
+
+group = 'com.test'
+
+sourceCompatibility = 1.8 // java 8
+targetCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'com.google.guava:guava:18.0'
+  compile 'org.apache.httpcomponents:httpclient:4.5.9'
+  compile 'com.jayway.jsonpath:json-path:2.4.0'
+  compile 'commons-io:commons-io:2.6'
+  compile 'org.apache.commons:commons-lang3:3.9'
+  compile 'log4j:log4j:1.2.17'
+  compile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+  compile 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+  
+
+  
+  
+}
+
+test {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+
+jacoco {
+	toolVersion = "0.8.4"
+	reportsDir = file("$buildDir/jacoco")
+}
+
+
+
+
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/coverage")
+    }
+}
+
+
+
+
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+// To specify a license in the pom:
+install {
+  repositories.mavenInstaller {
+    pom.project {
+      licenses {
+        license {
+          name 'The Apache Software License, Version 2.0'
+          url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+          distribution 'repo'
+        }
+      }
+    }
+  }
+}
+
+wrapper {
+    gradleVersion = "5.1.1"
+    distributionType = Wrapper.DistributionType.ALL
+}
