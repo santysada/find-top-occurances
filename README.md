@@ -3,8 +3,8 @@
 > Below commands to checkout the code, compile and test
 
 ```console
-git clone url
-cd findtopwords
+git clone https://github.com/santysada/find-top-occurances.git
+cd find-top-occurances
 gradlew build
 ```
 ## Unit test reports
