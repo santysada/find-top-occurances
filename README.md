@@ -16,7 +16,8 @@ gradlew build
 >> build\coverage\index.html
 
 ## To run the program
-> First argument should be page_id, second argument should be top n occurances to be found
+> First argument -> page_id 
+> Second argument -> top n (words occur more number of times)
 > Note that valid arguments are mandatory, if not provided the program will show warnings. Program will not throw any error
 
 ```console
