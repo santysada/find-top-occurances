@@ -10,6 +10,7 @@ spec:
     matchLabels:
       app: hello
       tier: web
+  replicas: 2
   template:
     metadata:
       labels:
