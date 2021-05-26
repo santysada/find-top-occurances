@@ -23,13 +23,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: helloweb
+  name: nginx
 spec:
-  type: NodePort 
-  ports:
-  - port: 80
-    targetPort: 80
-    protocol: TCP
-    name: http
   selector:
-    app: hello
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
