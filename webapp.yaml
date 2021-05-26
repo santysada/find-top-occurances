@@ -18,7 +18,7 @@ spec:
         ports:
         - containerPort: 80		
       - name: spring-boot-example
-        image: 'gcr.io/fleet-resolver-237016/spring-boot-example:v1'
+        image: 'ninrod/springboot'
         ports:
         - containerPort: 8080
 ---
