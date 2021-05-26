@@ -18,7 +18,7 @@ spec:
         ports:
         - containerPort: 80		
       - name: spring-boot-example
-        image: 'ninrod/springboot'
+        image: 'helloworldcontainers/java-spring-boot-hello-world'
         ports:
         - containerPort: 8080
 ---
